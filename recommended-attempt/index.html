@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Word Guess Game</title>
+</head>
+
+<body>
+    <div id="game">
+        <h1>Hangman:</h1>
+        <h2>Fiesta Edition</h2>
+        <h3>Press any letter to begin playing!</h3>
+        <p>Wins:</p>
+        <p>Number of Guesses Remaining:</p>
+        <p>Letters Already Guessed:</p>
+    </div>
+    
+    <script type="text/javascript">
+        // resetGame();
+
+        // words go here
+        var words = [
+            "beer",
+            "parades",
+            "oyster bake",
+            "papel picado",
+            "chicken on a stick"
+        ];
+
+        // good
+        var word = words[Math.floor(Math.random() * words.length)];
+
+        var wins = 0;
+
+        var userGuess =  ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+        var wordElement = document.getElementById('word');
+        var letterCountElement = document.getElementById('letterCount');
+        var lettersGuessedElement = document.getElementById('lettersGuessed');
+
+        function initializeGame() {
+            // word = 'papel picado';
+            wins = 0;
+            remainingGuesses = 26;
+            alreadyGuessed = [];
+            correctGuesses = [];
+        };
+        
+        // necessary??
+        var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        
+        // answer array
+        var answerArray = [];
+        for (var i = 0; i < word.length; i++) {
+            answerArray[i] = "_";
+        }
+
+        var remainingLetters = word.length -1;
+
+        // loop
+        if (remainingLetters > 0) {
+           alert (answerArray.join(" "));
+
+        }
+        
+        // guesses
+            var guess = prompt ("Press the letter you want to guess")
+            // if (guess.length !== 1) {
+                // reveal in guesses or on line
+
+        // update
+            for (var j = 0; j < word.length; j++) {
+                if (word[j] === guess) {
+                    answerArray[j] = guess;
+                    remainingLetters--;
+                }
+            }
+
+        alert(answerArray.join(" "));
+
+        // make so change in wins, no popup
+        alert("You win!");
+
+        // determines which key is pressed
+        
+
+        document.onkeyup = function(event) {
+            var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+            console.log(userGuess);
+            updateGuesses (userGuess);
+            checkWin();
+        };
+
+        document.querySelector('#game').innerHTML = html;
+
+
+    </script>
+</body>
+
+</html>
+
+<!-- NOTES
+    tell player to press any key to begin
+    player will press letters to Guess
+    letters will either appear in _ portion or not
+    either way will appear in letters already guessed, will subtract from # of Guesses
+    it will either get the word or not
+    will add to wins if get it
+    if so, will move on to next word -->
