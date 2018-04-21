@@ -2,10 +2,9 @@
 <html lang="en-us">
 
 <head>
-    <!-- <script src="assets/javascript/game.js" type="text/javascript"></script> -->
     <meta charset="UTF-8">
     <title>Word Guess Game</title>
-    <link rel="assets/css/style.css" type"stylesheet">
+    <link rel="assets/css/style.css" type="stylesheet">
 </head>
     <body>
         <div class="game">
@@ -15,14 +14,16 @@
             </header>
 
             <h3>Press any letter to begin playing!</h3>
-            <div id="wins">Wins:</div><br>
+            <p><div id="wins">Wins:</div><br>
             <div id="current">Current Word:</div><br>
             <div id="word-blanks"></div><br>
             <div id="guesses-left">Number of Guesses Remaining:</div><br>
-            <div id="used">Letters Already Guessed:</div><br>
+            <div id="used">Letters Already Guessed:</div><br></p>
         </div>
 
-        <script src="assets/javascript/game.js" type="text/javascript">
+        <script type="text/javascript" src="assets/javascript/game.js"></script>
+
+        <!-- <script src="assets/javascript/game.js" type="text/javascript">
             // essentials
 var wordBank = [ 
     "beer",
@@ -63,7 +64,7 @@ function startGame(){
 
     // reset
     wrongLetter = [];
-    guessesLeft = 26;
+    guessesLeft = 10;
 
     // HTML
     document.getElementById('guesses-left').textContent = guessesLeft;
@@ -72,7 +73,8 @@ function startGame(){
     // function 2
     function winLose(){
         if(winCounter === randomWord.length){
-            alert('You win!');
+            alert("Wins:" + winCounter);
+            winCounter +=1;
             startGame();
         }
         else if(guessesLeft === 0){
@@ -91,7 +93,7 @@ function startGame(){
                 if(randomWord[i] === userGuess){
                     underScore[i] = userGuess;
                     console.log(userGuess);
-                    winCounter++;
+                    winCounter +=1;
                     winLose();
                 }
             }
@@ -106,7 +108,7 @@ function startGame(){
     }
 
     startGame();
-        </script>
+        </script> -->
         
     </body>
 </html>
